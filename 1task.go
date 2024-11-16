@@ -79,7 +79,8 @@ func testSpinWait() {
 	spinCount := 0
 	for spinCount < 1000 { // активное ожидание с контролем
 		if spinCount % 100 == 0 { // добавляем паузы через каждые 100 итераций
-			time.Sleep(1 * time.Microsecond)
+			randomDelay := time.Duration(rand.Intn(10)+1) * time.Microsecond
+			time.Sleep(randomDelay)
 		}
 		spinCount++
 	}
